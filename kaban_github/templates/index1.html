@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kaban Board</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" href= "style.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <h1>Kaban Board</h1>
+    <div class="task-inp">
+        <form action='/add' method='POST'>
+            <label for="tname-input">Task Name</label>
+            <input type="text" id="tname-input" name="tname-input">
+            <select id="ttype" name="ttype">
+                <option value="request">Request</option>
+                <option value="ongoing">In Progress</option>
+                <option value="done">Done</option>
+            </select>
+            <br>
+            <label for="tdescribe-input">Task Description</label>
+            <input type="text" id="tdescribe-input" name="tdescribe-input">
+            <br>
+            <!-- <input type="submit" value="Submit" id="submit-task"> -->
+            <input type="submit" id="submit-task" value="Create Task">
+        </form>
+        <!-- <button id="submit-task" value="sm">Create task</button> -->
+
+    </div>
+
+
+    <div class="main-board">
+
+        <div class="first-box">
+            <div class ="titl" id="requested"> Requested</div>
+            <div class="canva" id="canva-req">
+                <form action="/done" method="POST">
+                    {% for todo in todos %}
+                    <input type="radio" name="todo" value="{{ todo.id }}" > {{ todo.text }} <br>
+                    {% endfor %}
+                </form>
+            </div>
+        </div>
+
+        <div class="second-box">
+            <div class= "titl" id="in-progress"> In Progress</div>
+            <div class="canva" id="canva-prog"></div>
+        </div>
+
+        <div class="third-box">
+            <div class= "titl" id="done-can"> Done</div>
+            <div class="canva" id="canva-done">
+                <form action="/>delete" method="POST">
+                    {% for todone in todones %}
+                    <input type="text" name="todone" value={{ todone.id }}><s>{{ todone.text }}</s><br>
+                    {% endfor %}
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+
+
+</html>

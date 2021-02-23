@@ -1,0 +1,35 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Kanban Board </title>
+    </head>
+
+    <h2>Add a New Task</h2>
+    <form action="/add" method="POST">
+        <input type="text" id="task" name="task" value=""><br>
+        <input type="submit" value="Add Task">
+    </form>
+
+    <h2>Doing</h2>
+    <form action="/done" method="POST">
+        <label for="Working"></label>
+        {% for todo in todos %}
+            <input type="radio" name="todo" value="{{ todo.id }}">{{ todo.text }}<br>
+        {% endfor %}
+
+        <input type="submit" value="Check Off"><p>Note: this can only handle one task at a time</p>
+    </form>
+
+    <h2>Done</h2>
+    <form action="/delete" method="POST">
+        <label for="Done"></label>
+        {% for todone in todones %}
+            <input type="radio" name="todone" value="{{ todone.id }}"><s>{{ todone.text }}</s><br>
+        {% endfor %}
+
+        <input type="submit" value="Delete"><p>Note: this action cannot be undone</p>
+    </form>
+</html>
